@@ -1,4 +1,5 @@
 let pos;
+let startRun=true;
 let balls=[]
 let ground=[]
 let textPoints=[]
@@ -51,16 +52,28 @@ function setup() {
   Runner.run(runner,engine)
   setupPoints()
   addBoundry()
-  for(let i=0;i<textPoints.length-2;i++){
-    balls.push(new Ball())
-  }
-  Matter.Detector.setBodies(detector,balls.map(x=>x.object))
+  // for(let i=0;i<textPoints.length-2;i++){
+  //   balls.push(new Ball())
+  // }
+  // Matter.Detector.setBodies(detector,balls.map(x=>x.object))
 }
 
 function draw() {
   // for(i of textPoints){
   //   ellipse(i.x,i.y,15,15)
   // }
+  if(startRun){
+    background(0)
+    if(mouseIsPressed==true){
+      startRun=false
+      if(startRun==false){
+      for(let i=0;i<textPoints.length-2;i++){
+        balls.push(new Ball())
+      }
+      Matter.Detector.setBodies(detector,balls.map(x=>x.object))
+      }
+    }}
+  else{
   background(0,0,0,15);
   colorMode(HSB,360,100,100,100)
   engine.world.gravity.x=map(rotationY,-PI,PI,-2.001,2.001)
@@ -110,6 +123,7 @@ function draw() {
     }
   }
   
+  }
 }
 
 function addBoundry(){
