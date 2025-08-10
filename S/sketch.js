@@ -21,9 +21,9 @@ function setup(){
   currentrotationZ=rotationZ
   max_length=sqrt(width*width+height*height)
   ellipseMode(CENTER)
-  birthday_song.setVolume(0.3)
-  song_1.setVolume(0.1)
-  song_2sec.setVolume(0.1)
+  birthday_song.setVolume(0.5)
+  song_1.setVolume(0.3)
+  song_2sec.setVolume(0.3)
 }
 
 
