@@ -8,8 +8,9 @@ let max_length=null;
 function preload(){
   img1=loadImage('a.png')
   img2=loadImage('b.png')
-  song = loadSound('engine2.mp3')
-  song2 = loadSound('2sec.mp3')
+  song_1 = loadSound('engine2.mp3')
+  song_2sec = loadSound('short_engine.mp3')
+  birthday_song=loadSound('birthday.mp3')
 
 }
 function setup(){
@@ -20,8 +21,9 @@ function setup(){
   currentrotationZ=rotationZ
   max_length=sqrt(width*width+height*height)
   ellipseMode(CENTER)
-  song.setVolume(0.1)
-  song2.setVolume(0.1)
+  birthday_song.setVolume(0.3)
+  song_1.setVolume(0.1)
+  song_2sec.setVolume(0.1)
 }
 
 
@@ -49,16 +51,23 @@ let z_value=0
 function draw(){
   background(25)
   imageMode(CENTER)
+  print(song_2sec.isPlaying())
   if(abs(z_value)<200){
     z_value=rotation()
-  if(!(song2.isPlaying())){
+  if(1){
     if(abs(z_value)>20){
-      song2.play()
+      if(!(song_2sec.isPlaying())){
+        song_2sec.play()
+      }
+    }
+    else{
+      song_2sec.stop(1)
     }
   }}
   else{
     if (open_width==2){
-      song.play()
+      song_1.play()
+      song_1.stop(10)
     }
     open_width*=1.04
     if(open_width>=90){
@@ -90,4 +99,8 @@ function draw(){
   arc(0,0,max_length,max_length,180+open_width,-open_width)
   pop()
   rotation_angle+=z_value/20
+
+  if(song_1.currentTime()>2 && !(birthday_song.isPlaying())){
+    birthday_song.play()
+  }
 }
