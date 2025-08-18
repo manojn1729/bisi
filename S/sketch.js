@@ -4,6 +4,7 @@ let rotationHistory = [];
 let lastrotationZ = null;
 let currentrotationZ=null;
 let max_length=null;
+let startRun=true;
 
 function preload(){
   img1=loadImage('a.png')
@@ -49,6 +50,13 @@ let rotation_angle=0
 let z_value=0
 
 function draw(){
+
+  if(startRun){
+    background(25)
+    if(mouseIsPressed==true){
+      startRun=false}}
+  else{
+  
   background(25)
   imageMode(CENTER)
   print(song_2sec.isPlaying())
@@ -103,4 +111,4 @@ function draw(){
   if(song_1.currentTime()>2 && !(birthday_song.isPlaying())){
     birthday_song.play()
   }
-}
+}}
