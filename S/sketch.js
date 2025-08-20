@@ -54,7 +54,8 @@ function draw(){
   if(startRun){
     background(25)
     if(mouseIsPressed==true){
-      startRun=false}}
+      startRun=false
+      song_2sec.play()}}
   else{
   
   background(25)
